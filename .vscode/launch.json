@@ -15,30 +15,26 @@
       "console": "integratedTerminal",
       "justMyCode": true,
       "args": [
-        "-d=${workspaceFolder}/generated/identity-sso-core",
-        "-k=API-KEYHERE", 
+        "-d=${workspaceFolder}/generated/identity-adhoc-core",
+        "-k=", 
         "-o=https://octopus.vnerd.com/api/",
 
         "-a=get_project",
-        "-pj=identity-sso-core",
+        "-pj=identity-adhoc-core",
       ],
     },
-    // {
-    //   "name": "Python: Get Variable Set",
-    //   "type": "python",
-    //   "request": "launch",
-    //   "program": "src/octopus_python_client/main.py",
-    //   "console": "integratedTerminal",
-    //   "justMyCode": true,
-    //   "args": [
-    //     "-d=${workspaceFolder}/generated",
-    //     "-k=", 
-    //     "-o=https://octopus.vnerd.com/api/",
-        
-    //     "-a=get", 
-    //     "--item_type=libraryvariablesets",
-    //     "--item_name=Cassandra EC2",
-    //   ],
-    // }
+    {
+      "name": "Python: Transform Project",
+      "type": "python",
+      "request": "launch",
+      "program": "src/data_transforms/main.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "-p=identity-web-core",
+        "-id=${workspaceFolder}/generated/",
+        "-d=${workspaceFolder}/generated/converted/",
+      ],
+    }
   ]
 }
