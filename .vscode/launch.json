@@ -1,5 +1,5 @@
 {
-  // Export the OCTOAPIKEY environment variable before running this
+  // Update the API key in the `-k` argument before running.
   // Also, configure an appropriate pipenv virtual environment
   
   // Use IntelliSense to learn about possible attributes.
@@ -11,45 +11,34 @@
       "name": "Python: Get Project",
       "type": "python",
       "request": "launch",
-      "program": "$HOME/repo/octopus-python-client/src/octopus_python_client/main.py",
-      "cwd": "$HOME/repo/octopus-python-client/",
+      "program": "src/octopus_python_client/main.py",
       "console": "integratedTerminal",
       "justMyCode": true,
       "args": [
-        "-d=$HOME/repo/octopus-python-client/identity-sso-core",
-        "-k=$OCTOAPIKEY", 
+        "-d=${workspaceFolder}/generated/identity-sso-core",
+        "-k=API-KEYHERE", 
         "-o=https://octopus.vnerd.com/api/",
-        
-        // "-a=get", 
-        // "--item_type=libraryvariablesets",
-        // "--item_name=Cassandra EC2",
-        
+
         "-a=get_project",
         "-pj=identity-sso-core",
-        
       ],
     },
-    {
-      "name": "Python: Get Variable Set",
-      "type": "python",
-      "request": "launch",
-      "program": "$HOME/repo/octopus-python-client/src/octopus_python_client/main.py",
-      "cwd": "$HOME/repo/octopus-python-client/",
-      "console": "integratedTerminal",
-      "justMyCode": true,
-      "args": [
-        "-d=current",
-        "-k=$OCTOAPIKEY", 
-        "-o=https://octopus.vnerd.com/api/",
+    // {
+    //   "name": "Python: Get Variable Set",
+    //   "type": "python",
+    //   "request": "launch",
+    //   "program": "src/octopus_python_client/main.py",
+    //   "console": "integratedTerminal",
+    //   "justMyCode": true,
+    //   "args": [
+    //     "-d=${workspaceFolder}/generated",
+    //     "-k=", 
+    //     "-o=https://octopus.vnerd.com/api/",
         
-        "-a=get", 
-        "--item_type=libraryvariablesets",
-        "--item_name=Cassandra EC2",
-        
-        // "-a=get_project",
-        // "-pj=identity-sso-core",
-        
-      ],
-    }
+    //     "-a=get", 
+    //     "--item_type=libraryvariablesets",
+    //     "--item_name=Cassandra EC2",
+    //   ],
+    // }
   ]
 }
