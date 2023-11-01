@@ -12,3 +12,5 @@ coverage-report/
 generated/
 dist/
 .cache/
+src/octopus_python_client/configurations/configuration.json
+log*

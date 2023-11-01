@@ -689,6 +689,10 @@ class Common:
                                                     item_id=item.get(deployment_process_id_key))
             self.get_single_item_by_name_or_id_save(item_type=item_type_variables,
                                                     item_id=item.get(variable_set_id_key))
+            # Get Associated Variable Sets
+            for variable_set_id in item['IncludedLibraryVariableSetIds']:
+                self.get_single_item_by_name_or_id_save(item_type=item_type_library_variable_sets,
+                                                    item_id=variable_set_id)
         elif item_type == item_type_library_variable_sets:
             self.log_info_print(f"For item type{item_type_library_variable_sets}, also get variables")
             self.get_single_item_by_name_or_id_save(item_type=item_type_variables,
