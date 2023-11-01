@@ -2,16 +2,16 @@ import json
 import logging
 from pprint import pformat
 
-from octopus_python_client.common import item_type_deployment_processes, item_type_projects, id_key, \
+from common import item_type_deployment_processes, item_type_projects, id_key, \
     deployment_process_id_key, item_type_channels, packages_key, action_name_key, package_reference_name_key, Common, \
     feed_id_key, package_id_key, item_type_feeds, item_type_packages, version_key, items_key, name_key, timestamp_key, \
     value_key, project_id_key, next_version_increment_key, release_notes_key, channel_id_key, selected_packages_key, \
     item_type_releases, item_type_deployments, item_type_tenants, item_type_environments, tenant_id_key, newline_sign, \
     environment_id_key, release_id_key, comments_key, release_versions_key, url_prefix_key, dot_sign, sha_key, \
     author_key, latest_commit_sha_key, title_key
-from octopus_python_client.config import Config
-from octopus_python_client.utilities.helper import replace_list_new_value, parse_string, find_item
-from octopus_python_client.utilities.send_requests_to_octopus import operation_post
+from config import Config
+from utilities.helper import replace_list_new_value, parse_string, find_item
+from utilities.send_requests_to_octopus import operation_post
 
 logger = logging.getLogger(__name__)
 

@@ -3,8 +3,8 @@ import logging
 import requests
 import urllib3
 
-from octopus_python_client.config import Config
-from octopus_python_client.utilities.helper import log_raise_value_error
+from config import Config
+from utilities.helper import log_raise_value_error
 
 operation_delete = "delete"
 operation_get = "get"

@@ -1,8 +1,8 @@
 import tkinter as tk
 
-from octopus_python_client.common import Common
-from octopus_python_client.config import Config, SystemConfig
-from octopus_python_client.gui.wizard import Wizard
+from common import Common
+from config import Config, SystemConfig
+from gui.wizard import Wizard
 
 
 class MainGUI:

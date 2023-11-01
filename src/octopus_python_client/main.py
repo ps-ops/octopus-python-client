@@ -3,16 +3,16 @@ import logging
 import os
 import sys
 
-from octopus_python_client.actions import Actions, MIGRATION_LIST
-from octopus_python_client.common import item_type_deployment_processes, outer_space_download_types, steps_key, \
+from actions import Actions, MIGRATION_LIST
+from common import item_type_deployment_processes, outer_space_download_types, steps_key, \
     inside_space_download_types, deployment_process_id_key, Common
-from octopus_python_client.config import Config, SystemConfig
-from octopus_python_client.constants import Constants
-from octopus_python_client.deployment_processes import DeploymentProcesses
-from octopus_python_client.migration import Migration
-from octopus_python_client.projects import Projects
-from octopus_python_client.release_deployment import ReleaseDeployment
-from octopus_python_client.utilities.helper import log_raise_value_error
+from config import Config, SystemConfig
+from constants import Constants
+from deployment_processes import DeploymentProcesses
+from migration import Migration
+from projects import Projects
+from release_deployment import ReleaseDeployment
+from utilities.helper import log_raise_value_error
 
 logger = logging.getLogger(__name__)
 

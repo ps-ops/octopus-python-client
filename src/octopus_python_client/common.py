@@ -4,11 +4,11 @@ import os
 import time
 from pprint import pformat
 
-from octopus_python_client.config import Config
-from octopus_python_client.constants import Constants
-from octopus_python_client.utilities.helper import compare_overwrite, find_item, load_file, save_file, \
+from config import Config
+from constants import Constants
+from utilities.helper import compare_overwrite, find_item, load_file, save_file, \
     is_local_same_as_remote2, write_binary_file
-from octopus_python_client.utilities.send_requests_to_octopus import call_octopus, operation_get, operation_post, \
+from utilities.send_requests_to_octopus import call_octopus, operation_get, operation_post, \
     operation_put, operation_delete, operation_get_file, operation_post_file, content_type_key
 
 # constants
@@ -61,7 +61,7 @@ is_service_key = "IsService"
 items_key = 'Items'
 latest_commit_sha_key = "latest_commit_sha"
 life_cycle_id_key = "LifecycleId"
-name_key = 'Name'
+name_key = 'Name' 
 slug_key = 'Slug'
 new_value_key = "NewValue"
 next_version_increment_key = "NextVersionIncrement"

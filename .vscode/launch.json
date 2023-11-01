@@ -1,0 +1,55 @@
+{
+  // Export the OCTOAPIKEY environment variable before running this
+  // Also, configure an appropriate pipenv virtual environment
+  
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Get Project",
+      "type": "python",
+      "request": "launch",
+      "program": "$HOME/repo/octopus-python-client/src/octopus_python_client/main.py",
+      "cwd": "$HOME/repo/octopus-python-client/",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "-d=$HOME/repo/octopus-python-client/identity-sso-core",
+        "-k=$OCTOAPIKEY", 
+        "-o=https://octopus.vnerd.com/api/",
+        
+        // "-a=get", 
+        // "--item_type=libraryvariablesets",
+        // "--item_name=Cassandra EC2",
+        
+        "-a=get_project",
+        "-pj=identity-sso-core",
+        
+      ],
+    },
+    {
+      "name": "Python: Get Variable Set",
+      "type": "python",
+      "request": "launch",
+      "program": "$HOME/repo/octopus-python-client/src/octopus_python_client/main.py",
+      "cwd": "$HOME/repo/octopus-python-client/",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "-d=current",
+        "-k=$OCTOAPIKEY", 
+        "-o=https://octopus.vnerd.com/api/",
+        
+        "-a=get", 
+        "--item_type=libraryvariablesets",
+        "--item_name=Cassandra EC2",
+        
+        // "-a=get_project",
+        // "-pj=identity-sso-core",
+        
+      ],
+    }
+  ]
+}

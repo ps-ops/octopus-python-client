@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
 
-from octopus_python_client.actions import ACTIONS_DICT, MIGRATION_LIST
-from octopus_python_client.common import Common
-from octopus_python_client.config import Config
-from octopus_python_client.gui.common_widgets import CommonWidgets
+from actions import ACTIONS_DICT, MIGRATION_LIST
+from common import Common
+from config import Config
+from gui.common_widgets import CommonWidgets
 
 
 class ServersWidgets(tk.Frame):

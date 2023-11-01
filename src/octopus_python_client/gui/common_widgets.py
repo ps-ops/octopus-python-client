@@ -3,8 +3,8 @@ import logging
 import tkinter as tk
 from tkinter import ttk
 
-from octopus_python_client.common import id_key, name_key
-from octopus_python_client.utilities.helper import find_item
+from common import id_key, name_key
+from utilities.helper import find_item
 
 logger = logging.getLogger(__name__)
 

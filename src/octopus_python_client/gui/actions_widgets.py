@@ -1,7 +1,7 @@
 import tkinter as tk
 
-from octopus_python_client.actions import ACTIONS_DICT
-from octopus_python_client.common import Common
+from actions import ACTIONS_DICT
+from common import Common
 
 
 class ActionsWidgets(tk.Frame):

@@ -5,12 +5,12 @@ from os import getcwd
 from os.path import dirname, abspath, join
 from pathlib import Path
 
-from octopus_python_client.actions import Actions
-from octopus_python_client.constants import Constants
-from octopus_python_client.utilities.get_pypi_version import get_version
-from octopus_python_client.utilities.helper import load_file, save_file
+from actions import Actions
+from constants import Constants
+from utilities.get_pypi_version import get_version
+from utilities.helper import load_file, save_file
 
-logging.basicConfig(filename=join(getcwd(), "octopus_python_client.log"),
+logging.basicConfig(filename=join(getcwd(), "log"),
                     filemode="a",
                     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
                     datefmt="%H:%M:%S",

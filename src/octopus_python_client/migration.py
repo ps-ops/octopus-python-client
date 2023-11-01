@@ -5,7 +5,7 @@ import os
 import re
 from time import gmtime, strftime
 
-from octopus_python_client.common import name_key, tags_key, id_key, item_type_tag_sets, item_type_projects, Common, \
+from common import name_key, tags_key, id_key, item_type_tag_sets, item_type_projects, Common, \
     item_type_deployment_processes, deployment_process_id_key, scope_values_key, inside_space_download_types, \
     inside_space_clone_types, version_key, item_type_library_variable_sets, item_type_variables, variable_set_id_key, \
     item_type_tenant_variables, canonical_tag_name_key, item_type_tags, tenant_id_key, item_type_migration, space_map, \
@@ -17,10 +17,10 @@ from octopus_python_client.common import name_key, tags_key, id_key, item_type_t
     item_type_spaces, default_password, is_service_key, space_managers_teams, item_type_teams, package_id_key, \
     comma_sign, cloned_from_project_id, item_type_runbook_processes, item_type_project_triggers, file_extension_key, \
     feed_id_key, item_types_with_logo, item_type_logo
-from octopus_python_client.config import Config
-from octopus_python_client.constants import Constants
-from octopus_python_client.utilities.helper import find_item, save_file, find_matched_sub_list, log_raise_value_error
-from octopus_python_client.utilities.send_requests_to_octopus import login_payload_user_name_key, \
+from config import Config
+from constants import Constants
+from utilities.helper import find_item, save_file, find_matched_sub_list, log_raise_value_error
+from utilities.send_requests_to_octopus import login_payload_user_name_key, \
     login_payload_password_key
 
 

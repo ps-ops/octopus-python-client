@@ -7,15 +7,15 @@ from pprint import pformat
 from time import strftime, localtime
 from tkinter import messagebox
 
-from octopus_python_client.actions import Actions, ACTIONS_DICT
-from octopus_python_client.common import Common, item_type_channels, project_id_key, name_key, id_key, \
+from actions import Actions, ACTIONS_DICT
+from common import Common, item_type_channels, project_id_key, name_key, id_key, \
     item_type_projects, release_versions_key, version_key, item_type_packages, item_type_environments, \
     item_type_tenants, tenant_id_key
-from octopus_python_client.constants import Constants
-from octopus_python_client.gui.common_widgets import CommonWidgets
-from octopus_python_client.migration import Migration
-from octopus_python_client.release_deployment import ReleaseDeployment
-from octopus_python_client.utilities.helper import find_item
+from constants import Constants
+from gui.common_widgets import CommonWidgets
+from migration import Migration
+from release_deployment import ReleaseDeployment
+from utilities.helper import find_item
 
 logger = logging.getLogger(__name__)
 

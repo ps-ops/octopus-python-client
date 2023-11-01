@@ -1,9 +1,9 @@
 import copy
 import logging
 
-from octopus_python_client.common import item_type_deployment_processes, item_type_projects, steps_key, name_key, \
+from common import item_type_deployment_processes, item_type_projects, steps_key, name_key, \
     deployment_process_id_key, id_key, actions_key, Common
-from octopus_python_client.utilities.helper import find_index, find_item, log_raise_value_error
+from utilities.helper import find_index, find_item, log_raise_value_error
 
 
 class DeploymentProcesses:

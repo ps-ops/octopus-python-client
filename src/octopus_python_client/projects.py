@@ -1,11 +1,11 @@
 import copy
 import logging
 
-from octopus_python_client.common import item_type_projects, item_type_library_variable_sets, \
+from common import item_type_projects, item_type_library_variable_sets, \
     included_library_variable_set_ids_key, id_key, name_key, Common, item_type_project_groups, comma_sign, slash_sign
-from octopus_python_client.deployment_processes import DeploymentProcesses
-from octopus_python_client.utilities.helper import find_item, compare_lists
-from octopus_python_client.utilities.send_requests_to_octopus import operation_delete
+from deployment_processes import DeploymentProcesses
+from utilities.helper import find_item, compare_lists
+from utilities.send_requests_to_octopus import operation_delete
 
 
 class Projects:

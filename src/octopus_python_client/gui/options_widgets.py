@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from octopus_python_client.actions import ACTIONS_DICT, Actions
-from octopus_python_client.common import Common, inside_space_clone_types, item_type_projects, id_key, \
+from actions import ACTIONS_DICT, Actions
+from common import Common, inside_space_clone_types, item_type_projects, id_key, \
     project_id_key, inside_space_download_types
-from octopus_python_client.gui.common_widgets import CommonWidgets
+from gui.common_widgets import CommonWidgets
 
 
 class OptionsWidgets(tk.Frame):

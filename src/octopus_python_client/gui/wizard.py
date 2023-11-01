@@ -1,11 +1,11 @@
 import tkinter as tk
 
-from octopus_python_client.common import Common
-from octopus_python_client.gui.actions_widgets import ActionsWidgets
-from octopus_python_client.gui.options_widgets import OptionsWidgets
-from octopus_python_client.gui.servers_widgets import ServersWidgets
-from octopus_python_client.gui.spaces_widgets import SpacesWidgets
-from octopus_python_client.gui.submit_widgets import SubmitWidgets
+from common import Common
+from gui.actions_widgets import ActionsWidgets
+from gui.options_widgets import OptionsWidgets
+from gui.servers_widgets import ServersWidgets
+from gui.spaces_widgets import SpacesWidgets
+from gui.submit_widgets import SubmitWidgets
 
 
 class Wizard(tk.Frame):

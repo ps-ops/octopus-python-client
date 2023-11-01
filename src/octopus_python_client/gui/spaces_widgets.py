@@ -1,9 +1,9 @@
 import tkinter as tk
 
-from octopus_python_client.actions import ACTIONS_DICT, MIGRATION_LIST, Actions
-from octopus_python_client.common import Common
-from octopus_python_client.constants import Constants
-from octopus_python_client.gui.common_widgets import CommonWidgets
+from actions import ACTIONS_DICT, MIGRATION_LIST, Actions
+from common import Common
+from constants import Constants
+from gui.common_widgets import CommonWidgets
 
 
 class SpacesWidgets(tk.Frame):
