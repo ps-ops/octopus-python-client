@@ -80,3 +80,13 @@ def write_hcl_file(file_path_name=None, content=None, project="app", environment
         json.dump(dict(sorted(content.items())), fp, indent=6, separators=["", " = "])
     with open(file_path_name, 'a', newline='\n') as fp:
         fp.write("\n  }\n}\n")
+
+def export_project_variable_mappings(file_path_name=None, content=None, project="app"):
+    # map = {project: list(sorted(content.keys()))}
+    make_dir(file_path_name=file_path_name)
+    with open(file_path_name, 'w', newline='\n') as fp:
+        fp.write("locals {\n  " + project + " = ")
+    with open(file_path_name, 'a', newline='\n') as fp:
+        json.dump(list(sorted(content.keys())), fp, indent=4, separators=[",", " = "])
+    with open(file_path_name, 'a', newline='\n') as fp:
+        fp.write("\n  }\n")

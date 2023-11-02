@@ -46,7 +46,7 @@ class DataTransform:
     def run(self):
         args = self._process_args_to_configs()
         input_directory = os.path.join(self.input_directory, args.project_name)
-        output_directory = os.path.join(self.data_path, args.project_name)
+        # output_directory = os.path.join(self.data_path, args.project_name)
         variable_lists = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/libraryvariablesets"), "Id")
         variables = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/variables"), "Id")
         merged_variables = transforms.merge_variable_sets(variables, variable_lists, args.project_name)
@@ -54,9 +54,12 @@ class DataTransform:
         # Get all this data out of here as HCL formatted locals blocks in tf files
         for environ in {"staging", "production"}:
           for parameter_set in normalized_parameters:
-            transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + parameter_set + "-parameters.tf"), normalized_parameters[parameter_set][environ]["parameters"], args.project_name, environ)
-            transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + parameter_set + "-secrets.tf"), normalized_parameters[parameter_set][environ]["secrets"], args.project_name, environ)
-        
+            if normalized_parameters[parameter_set][environ]["parameters"] != {}:
+                transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-parameters.tf"), normalized_parameters[parameter_set][environ]["parameters"], args.project_name, environ)
+            if normalized_parameters[parameter_set][environ]["secrets"] != {}:
+                transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-secrets.tf"), normalized_parameters[parameter_set][environ]["secrets"], args.project_name, environ)
+        transforms.export_project_variable_mappings(os.path.join(self.data_path + "setlists/" + args.project_name + "-parametersets.tf"), normalized_parameters, args.project_name)
+
 
 def main():
     logger.info(f"********** Data Transforms - start **********")
