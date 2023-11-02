@@ -49,12 +49,13 @@ class DataTransform:
         output_directory = os.path.join(self.data_path, args.project_name)
         variable_lists = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/libraryvariablesets"), "Id")
         variables = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/variables"), "Id")
-        merged_variables = transforms.merge_variable_sets(variables, variable_lists)
+        merged_variables = transforms.merge_variable_sets(variables, variable_lists, args.project_name)
         normalized_parameters = transforms.normalize_parameters(merged_variables)
         # Get all this data out of here as HCL formatted locals blocks in tf files
         for environ in {"staging", "production"}:
-          transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + args.project_name + "-parameters.tf"), normalized_parameters[environ]["parameters"], args.project_name, environ)
-          transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + args.project_name + "-secrets.tf"), normalized_parameters[environ]["secrets"], args.project_name, environ)
+          for parameter_set in normalized_parameters:
+            transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + parameter_set + "-parameters.tf"), normalized_parameters[parameter_set][environ]["parameters"], args.project_name, environ)
+            transforms.write_hcl_file(os.path.join(output_directory + "/" + environ + "-" + parameter_set + "-secrets.tf"), normalized_parameters[parameter_set][environ]["secrets"], args.project_name, environ)
         
 
 def main():

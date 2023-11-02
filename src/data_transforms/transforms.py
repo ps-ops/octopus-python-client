@@ -36,21 +36,23 @@ def load_yaml_files(directory_path, nameKey):
     
     return data
 
-def merge_variable_sets(variables, variable_sets):
+def merge_variable_sets(variables, variable_sets, project_name):
     for var in variables:
         if str(variables[var]['OwnerId']).startswith("Projects-"):
-            variables[var].update({"Name": "Project Specific Variables"})
+            variables[var].update({"Name": "Project Variables - " + project_name})
         else:
             foundSet = variable_sets[variables[var]['OwnerId']]
             variables[var].update({"Name": foundSet['Name']})
     return variables
 
 def normalize_parameters(input):
-    map = {"staging":{"secrets":{}, "parameters":{}}, "production":{"secrets":{}, "parameters":{}}}
+    map = {}
     # We can assume that all variables are going to be overwritten by the Project Specific Variables, 
     # so let's sort our input set to process the Project Specific Variables last
     sortedkeys = sorted(input.keys())
     for set in sortedkeys:
+        varSetName = input[set]["Name"]
+        map.update({varSetName :{"staging":{"secrets":{}, "parameters":{}}, "production":{"secrets":{}, "parameters":{}}}})
         varset=input[set]["Variables"]
         for var in varset:
             if var["IsSensitive"]:
@@ -59,12 +61,12 @@ def normalize_parameters(input):
                 varType = "parameters"
 
             if var["Scope"] == {}:
-                map["staging"][varType].update({var["Name"]:var["Value"]})
-                map["production"][varType].update({var["Name"]:var["Value"]})
+                map[varSetName]["staging"][varType].update({var["Name"]:var["Value"]})
+                map[varSetName]["production"][varType].update({var["Name"]:var["Value"]})
             elif var["Scope"]["Environment"][0] == "Environments-1":
-                map["staging"][varType].update({var["Name"]:var["Value"]})
+                map[varSetName]["staging"][varType].update({var["Name"]:var["Value"]})
             elif var["Scope"]["Environment"][0] == "Environments-2":
-                map["production"][varType].update({var["Name"]:var["Value"]})
+                map[varSetName]["production"][varType].update({var["Name"]:var["Value"]})
             else:
                 print("ERROR: Unknown environment")
     return map
