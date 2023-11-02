@@ -50,15 +50,24 @@ class DataTransform:
         variable_lists = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/libraryvariablesets"), "Id")
         variables = transforms.load_yaml_files(os.path.join(input_directory + "/Spaces-1/variables"), "Id")
         merged_variables = transforms.merge_variable_sets(variables, variable_lists, args.project_name)
-        normalized_parameters = transforms.normalize_parameters(merged_variables)
+
+        # This was cool, but a decent amount of manual transformation still after processing.
+
+        # normalized_parameters = transforms.normalize_parameters(merged_variables)
         # Get all this data out of here as HCL formatted locals blocks in tf files
-        for environ in {"staging", "production"}:
-          for parameter_set in normalized_parameters:
-            if normalized_parameters[parameter_set][environ]["parameters"] != {}:
-                transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-parameters.tf"), normalized_parameters[parameter_set][environ]["parameters"], args.project_name, environ)
-            if normalized_parameters[parameter_set][environ]["secrets"] != {}:
-                transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-secrets.tf"), normalized_parameters[parameter_set][environ]["secrets"], args.project_name, environ)
-        transforms.export_project_variable_mappings(os.path.join(self.data_path + "setlists/" + args.project_name + "-parametersets.tf"), normalized_parameters, args.project_name)
+        # for environ in {"staging", "production"}:
+        #   for parameter_set in normalized_parameters:
+        #     if normalized_parameters[parameter_set][environ]["parameters"] != {}:
+        #         transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-parameters.tf"), normalized_parameters[parameter_set][environ]["parameters"], args.project_name, environ)
+        #     if normalized_parameters[parameter_set][environ]["secrets"] != {}:
+        #         transforms.write_hcl_file(os.path.join(self.data_path + "/" + parameter_set + "/" + environ + "-secrets.tf"), normalized_parameters[parameter_set][environ]["secrets"], args.project_name, environ)
+        # transforms.export_project_variable_mappings(os.path.join(self.data_path + "setlists/" + args.project_name + "-parametersets.tf"), normalized_parameters, args.project_name)
+        
+        # Just make one massive local set for all the variables
+        normalized_parameters_by_type = transforms.normalize_parameters_by_type(merged_variables)
+        transforms.export_comprehensive_list(os.path.join(self.data_path + "fullset/" + args.project_name + ".tf"), normalized_parameters_by_type, args.project_name)
+        transforms.export_project_variable_mappings(os.path.join(self.data_path + "fullset/" + args.project_name + "-parametersets.tf"), normalized_parameters_by_type, args.project_name)
+
 
 
 def main():
